@@ -74,6 +74,16 @@ const SheetContent = React.forwardRef<
 ))
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
+/**
+ * A React component that renders a sheet header with optional styling.
+ *
+ * @param {Object} props - The props for the SheetHeader component.
+ * @param {string} [props.className] - Additional classes to apply to the div element.
+ * @returns {JSX.Element} - The rendered SheetHeader component.
+ *
+ * Example:
+ * <SheetHeader className="custom-header-class">
+ *   {/* Content goes here */
 const SheetHeader = ({
   className,
   ...props
@@ -88,6 +98,18 @@ const SheetHeader = ({
 )
 SheetHeader.displayName = "SheetHeader"
 
+/**
+ * A React component representing the footer of a sheet or modal.
+ *
+ * @param {React.HTMLAttributes<HTMLDivElement>} props - Props to be passed to the underlying `div` element.
+ * @param {string} [className] - Additional CSS classes to apply to the footer.
+ * @returns {JSX.Element} A React JSX element representing the sheet footer.
+ *
+ * Example usage:
+ * <SheetFooter className="my-custom-class">
+ *   <!-- Content goes here -->
+ * </SheetFooter>
+ */
 const SheetFooter = ({
   className,
   ...props
