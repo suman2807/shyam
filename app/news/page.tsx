@@ -95,6 +95,12 @@ const newsItems = [
   },
 ]
 
+/**
+ * A React component that renders the news page.
+ *
+ * This component handles filtering news items based on search terms and categories.
+ * It also provides a navigation back to the home page and displays a list of filtered news articles.
+ */
 export default function NewsPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [activeCategory, setActiveCategory] = useState("all")
