@@ -13,6 +13,15 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useToast } from "@/hooks/use-toast"
 import { useAuth } from "@/components/auth-context"
 
+/**
+ * Represents the component responsible for rendering the signup page.
+ *
+ * This component handles user registration logic, including form validation,
+ * password matching, and interaction with authentication services. It also
+ * manages state to track user input and display notifications using a toast system.
+ *
+ * @returns {JSX.Element} - The JSX element representing the signup page.
+ */
 export default function SignupPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -33,6 +42,15 @@ export default function SignupPage() {
     }
   }, [searchParams])
 
+  /**
+   * Handles changes in form data by updating the state with new values.
+   *
+   * @param {Event} e - The event object containing details of the change event.
+   * @returns {void}
+   *
+   * @example
+   * handleChange({ target: { name: 'username', value: 'JohnDoe' } });
+   */
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({
@@ -41,6 +59,12 @@ export default function SignupPage() {
     }))
   }
 
+  /**
+   * Handles the radio button change event to update the user type in form data.
+   *
+   * @param {string} value - The new value of the selected radio button representing the user type.
+   * @returns {void}
+   */
   const handleRadioChange = (value) => {
     setFormData((prev) => ({
       ...prev,
@@ -48,6 +72,17 @@ export default function SignupPage() {
     }))
   }
 
+  /**
+   * Handles form submission for user registration.
+   *
+   * This function prevents the default form submission behavior,
+   * validates if the entered passwords match, attempts to register
+   * the user using the provided data, and displays appropriate toast messages
+   * based on the outcome of the registration process.
+   *
+   * @async
+   * @param {Event} e - The event object representing the form submission.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault()
 
