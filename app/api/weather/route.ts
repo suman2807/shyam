@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server"
 
+/**
+ * Handles HTTP GET requests to fetch weather data for a specified location.
+ *
+ * @param {Request} request - The incoming HTTP request object.
+ * @returns {Promise<NextResponse>} A promise that resolves with the response object containing weather data or an error message.
+ * @throws {Error} If there is an error fetching weather data from the API.
+ */
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
@@ -24,6 +31,15 @@ export async function GET(request: Request) {
   }
 }
 
+/**
+ * Retrieves mock weather data for specified Indian cities. Defaults to Mumbai if location is not found.
+ *
+ * @param {string} location - The city for which the weather data is required. Supported locations are 'Mumbai', 'Delhi', 'Bangalore', and 'Kolkata'.
+ * @returns {Object} Weather data object containing current conditions, forecast, and farming tips.
+ * @example
+ * console.log(getMockWeatherData('Delhi'));
+ * // Returns weather data for Delhi with current conditions, forecast, and farming tips.
+ */
 function getMockWeatherData(location: string) {
   // Mock data for different Indian cities
   const data = {
