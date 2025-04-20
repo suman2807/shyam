@@ -48,6 +48,12 @@ export default function ProductPage({ params }) {
     inStock: true,
   }
 
+  /**
+   * Handles changes to the quantity.
+   *
+   * @param {number} change - The amount by which the quantity should change.
+   * @return {void}
+   */
   const handleQuantityChange = (change) => {
     const newQuantity = quantity + change
     if (newQuantity >= 1) {
@@ -55,6 +61,13 @@ export default function ProductPage({ params }) {
     }
   }
 
+  /**
+   * Handles the logic for adding a product to the cart.
+   *
+   * This function triggers a toast notification with details about the product being added,
+   * including the quantity and the product's name. The message displayed varies based on whether
+   * one or multiple dozens of the product are being added.
+   */
   const handleAddToCart = () => {
     toast({
       title: "Added to cart",
@@ -62,6 +75,13 @@ export default function ProductPage({ params }) {
     })
   }
 
+  /**
+   * Handles the action of adding a product to the user's wishlist.
+   *
+   * This function triggers a toast notification indicating that a product has been successfully added to the wishlist. It uses the `toast` function from the library to display the message, which includes the name of the product being added.
+   *
+   * @returns {void}
+   */
   const handleAddToWishlist = () => {
     toast({
       title: "Added to wishlist",
