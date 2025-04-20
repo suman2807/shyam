@@ -14,6 +14,12 @@ interface NewsItem {
   url: string
 }
 
+/**
+ * A React component that displays a rotating news feed with options to pause, navigate through items, and view all news.
+ *
+ * @function
+ * @returns {JSX.Element} - The rendered FlashNews component.
+ */
 export default function FlashNews() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -65,10 +71,21 @@ export default function FlashNews() {
     }
   }, [isPaused, newsItems.length])
 
+  /**
+   * Navigates to the previous news item in the list. If the current index is at the beginning of the list,
+   * it wraps around to the end.
+   *
+   * @function
+   * @returns {void}
+   */
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + newsItems.length) % newsItems.length)
   }
 
+  /**
+   * Updates the current index to point to the next item in the newsItems array.
+   * If it reaches the end of the array, it wraps around to the first item.
+   */
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % newsItems.length)
   }
