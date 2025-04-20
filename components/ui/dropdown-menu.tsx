@@ -168,6 +168,12 @@ const DropdownMenuSeparator = React.forwardRef<
 ))
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
 
+/**
+ * Renders a dropdown menu shortcut component with customizable styling.
+ *
+ * @param {React.HTMLAttributes<HTMLSpanElement>} props - HTML attributes to be passed to the span element.
+ * @returns {JSX.Element} - The rendered DropdownMenuShortcut component.
+ */
 const DropdownMenuShortcut = ({
   className,
   ...props
