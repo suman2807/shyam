@@ -72,6 +72,17 @@ const BreadcrumbPage = React.forwardRef<
 ))
 BreadcrumbPage.displayName = "BreadcrumbPage"
 
+/**
+ * A React component that renders a breadcrumb separator with optional children and additional className.
+ *
+ * @param {Object} props - The properties for the BreadcrumbSeparator component.
+ * @param {React.ReactNode} [props.children] - The content to display inside the separator. If not provided, a default ChevronRight icon is used.
+ * @param {string} [props.className] - Additional class names to apply to the breadcrumb separator.
+ * @returns {JSX.Element} - A JSX element representing the breadcrumb separator.
+ *
+ * @example
+ * <BreadcrumbSeparator>Custom Separator</BreadcrumbSeparator>
+ */
 const BreadcrumbSeparator = ({
   children,
   className,
@@ -88,6 +99,16 @@ const BreadcrumbSeparator = ({
 )
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
 
+/**
+ * A component that renders an ellipsis for use in breadcrumb trails.
+ *
+ * @param {Object} props - The properties to pass to the BreadcrumbEllipsis component.
+ * @param {string} [props.className] - Additional CSS classes to apply to the root element of the BreadcrumbEllipsis component.
+ * @returns {ReactElement} A ReactElement representing the rendered BreadcrumbEllipsis component.
+ *
+ * Example usage:
+ * <BreadcrumbEllipsis className="custom-class" />
+ */
 const BreadcrumbEllipsis = ({
   className,
   ...props
