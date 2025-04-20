@@ -44,6 +44,11 @@ export default function AddProductPage() {
     }
   }, [user, isLoading, router, toast])
 
+  /**
+   * Handles input change events by updating form data.
+   *
+   * @param {Object} e - The event object containing the target element's name and value.
+   */
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({
@@ -52,6 +57,12 @@ export default function AddProductPage() {
     }))
   }
 
+  /**
+   * Handles checkbox change event by updating the formData state.
+   *
+   * @param {boolean} checked - The current state of the checkbox (checked or unchecked).
+   * @return {void}
+   */
   const handleCheckboxChange = (checked) => {
     setFormData((prev) => ({
       ...prev,
@@ -59,6 +70,12 @@ export default function AddProductPage() {
     }))
   }
 
+  /**
+   * Handles changes in select elements by updating form data.
+   *
+   * @param {string} name - The name of the field being updated.
+   * @param {*} value - The new value for the field.
+   */
   const handleSelectChange = (name, value) => {
     setFormData((prev) => ({
       ...prev,
@@ -66,6 +83,14 @@ export default function AddProductPage() {
     }))
   }
 
+  /**
+   * Handles changes to an image input field.
+   *
+   * This function is triggered when the user selects a file in an image input field.
+   * It sets the selected file as part of form data and creates a preview URL for it.
+   *
+   * @param {Event} e - The event object containing the selected file information.
+   */
   const handleImageChange = (e) => {
     const file = e.target.files[0]
     if (file) {
@@ -77,6 +102,17 @@ export default function AddProductPage() {
     }
   }
 
+  /**
+   * Handles form submission for adding a new product.
+   *
+   * This function prevents the default form submission behavior, sets the submitting state to true,
+   * validates the form data, simulates an API call for saving the product (in demo mode),
+   * and handles success or error messages using toast notifications. It also updates the router
+   * upon successful submission.
+   *
+   * @async
+   * @param {Event} e - The event object from the form submission.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitting(true)
