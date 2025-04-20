@@ -7,6 +7,13 @@ export function useIsMobile() {
 
   React.useEffect(() => {
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
+    /**
+     * Event handler function that updates the state to reflect whether the window width is below the mobile breakpoint.
+     *
+     * @function
+     * @name onChange
+     * @returns {void}
+     */
     const onChange = () => {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
     }
