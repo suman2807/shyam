@@ -13,6 +13,17 @@ import { useCart } from "@/components/cart-context"
 import { useAuth } from "@/components/auth-context"
 import { useToast } from "@/hooks/use-toast"
 
+/**
+ * Renders the shopping cart page component.
+ *
+ * This component displays a list of items in the user's shopping cart,
+ * allows users to update item quantities, remove items from the cart,
+ * and proceed to checkout. It also shows an order summary with subtotal,
+ * shipping, tax, and total cost.
+ *
+ * @function
+ * @returns {JSX.Element} The rendered shopping cart page component.
+ */
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, subtotal } = useCart()
   const { user } = useAuth()
@@ -20,6 +31,14 @@ export default function CartPage() {
   const { toast } = useToast()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
 
+  /**
+   * Handles the checkout process. It checks if the user is logged in,
+   * simulates a checkout process, and then navigates the user to their orders page.
+   *
+   * @async
+   * @function handleCheckout
+   * @returns {void}
+   */
   const handleCheckout = () => {
     if (!user) {
       toast({
