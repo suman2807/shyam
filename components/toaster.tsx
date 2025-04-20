@@ -3,6 +3,11 @@
 import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from "@/components/ui/toast"
 import { useToast } from "@/hooks/use-toast"
 
+/**
+ * Renders a toaster component with multiple toasts.
+ *
+ * @returns {JSX.Element} - The rendered ToastProvider containing all the toasts.
+ */
 export function Toaster() {
   const { toasts } = useToast()
 
