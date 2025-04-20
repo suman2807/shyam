@@ -12,6 +12,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { useToast } from "@/hooks/use-toast"
 import { useAuth } from "@/components/auth-context"
 
+/**
+ * A React component for handling user login.
+ *
+ * @function
+ * @returns {JSX.Element} - The JSX element representing the Login Page.
+ */
 export default function LoginPage() {
   const router = useRouter()
   const { toast } = useToast()
@@ -21,6 +27,11 @@ export default function LoginPage() {
     password: "",
   })
 
+  /**
+   * Handles form data change events by updating the state with new values.
+   *
+   * @param {Event} e - The event object containing information about the input change.
+   */
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({
@@ -29,6 +40,14 @@ export default function LoginPage() {
     }))
   }
 
+  /**
+   * Handles the submission of a login form. This function prevents the default form submission,
+   * attempts to log in using the provided email and password, and handles the response by displaying appropriate messages and redirecting if successful.
+   *
+   * @async
+   * @function handleSubmit
+   * @param {Event} e - The form submission event object.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault()
 

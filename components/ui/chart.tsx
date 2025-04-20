@@ -24,6 +24,23 @@ type ChartContextProps = {
 
 const ChartContext = React.createContext<ChartContextProps | null>(null)
 
+/**
+ * Hook to access the chart context within a component.
+ *
+ * @returns {Object} - The chart context object, which provides chart-related data and functions.
+ * @throws {Error} - Throws an error if `useChart` is called outside of a `<ChartContainer />`.
+ *
+ * Example:
+ * ```jsx
+ * import React from 'react';
+ * import { useChart } from './SupportedLanguage.TYPESCRIPTX';
+ *
+ * const MyChartComponent = () => {
+ *   const chartData = useChart();
+ *   return <div>{chartData.title}</div>;
+ * };
+ * ```
+ */
 function useChart() {
   const context = React.useContext(ChartContext)
 
@@ -317,6 +334,26 @@ const ChartLegendContent = React.forwardRef<
 ChartLegendContent.displayName = "ChartLegend"
 
 // Helper to extract item config from a payload.
+/**
+ * Retrieves configuration from the payload based on the provided key.
+ *
+ * @param {ChartConfig} config - The configuration object to retrieve the value from.
+ * @param {unknown} payload - The payload object which may contain nested objects.
+ * @param {string} key - The key used to access the configuration or payload value.
+ * @returns {(any | undefined)} - The retrieved configuration value, or undefined if not found.
+ *
+ * @example
+ * const config = { title: 'Chart Title', color: 'blue' };
+ * const payload = { payload: { title: 'Nested Title', color: 'red' } };
+ * const result = getPayloadConfigFromPayload(config, payload, 'title');
+ * console.log(result); // Output: 'Nested Title'
+ *
+ * @example
+ * const config = { title: 'Chart Title', color: 'blue' };
+ * const payload = { nestedKey: 'Nested Payload' };
+ * const result = getPayloadConfigFromPayload(config, payload, 'nestedKey');
+ * console.log(result); // Output: undefined
+ */
 function getPayloadConfigFromPayload(
   config: ChartConfig,
   payload: unknown,

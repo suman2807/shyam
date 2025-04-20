@@ -2,6 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
+/**
+ * Renders a banner component showcasing FarmLink mobile app features and download options.
+ *
+ * @returns {JSX.Element} - The rendered MobileAppBanner component.
+ */
 export default function MobileAppBanner() {
   return (
     <div className="rounded-xl overflow-hidden bg-gradient-to-r from-green-600 to-green-700 text-white">

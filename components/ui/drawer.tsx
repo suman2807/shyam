@@ -5,6 +5,17 @@ import { Drawer as DrawerPrimitive } from "vaul"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * A component that provides a drawer functionality with an optional background scaling feature.
+ *
+ * @param {Object} props - The properties for the Drawer component.
+ * @property {boolean} [shouldScaleBackground=true] - Determines whether to scale the background when the drawer is open.
+ * @returns {React.ReactElement} - A React element representing the Drawer.
+ *
+ * Example:
+ * ```jsx
+ * <Drawer shouldScaleBackground={false}>
+ *   {/* Content of the drawer */
 const Drawer = ({
   shouldScaleBackground = true,
   ...props
@@ -55,6 +66,16 @@ const DrawerContent = React.forwardRef<
 ))
 DrawerContent.displayName = "DrawerContent"
 
+/**
+ * A component representing a drawer header.
+ *
+ * @param {React.HTMLAttributes<HTMLDivElement>} props - The properties passed to the DrawerHeader component.
+ * @param {string} [props.className] - Additional CSS class names to apply to the div element.
+ * @returns {JSX.Element} - The JSX element representing the DrawerHeader.
+ *
+ * @example
+ * <DrawerHeader className="custom-header">Header Content</DrawerHeader>
+ */
 const DrawerHeader = ({
   className,
   ...props
@@ -66,6 +87,18 @@ const DrawerHeader = ({
 )
 DrawerHeader.displayName = "DrawerHeader"
 
+/**
+ * A component representing the footer of a drawer or modal.
+ *
+ * @param {string} [className] - Optional class name(s) to be added to the root element.
+ * @param {...React.HTMLAttributes<HTMLDivElement>} props - Additional properties to pass to the root `div` element.
+ * @returns {JSX.Element} The rendered DrawerFooter component.
+ *
+ * @example
+ * <DrawerFooter className="custom-footer" onClick={() => console.log('Footer clicked')}>
+ *   Content here...
+ * </DrawerFooter>
+ */
 const DrawerFooter = ({
   className,
   ...props

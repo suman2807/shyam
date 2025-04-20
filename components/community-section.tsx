@@ -72,6 +72,11 @@ export default function CommunitySection() {
 
   const [eventsState, setEventsState] = useState(events)
 
+  /**
+   * Handles the like functionality for a discussion.
+   *
+   * @param {string} discussionId - The ID of the discussion to toggle like status.
+   */
   const handleLike = (discussionId) => {
     setDiscussions(
       discussions.map((discussion) => {
@@ -88,6 +93,11 @@ export default function CommunitySection() {
     )
   }
 
+  /**
+   * Handles the registration or cancellation of an event.
+   *
+   * @param {string} eventId - The unique identifier for the event to register or cancel.
+   */
   const handleRegister = (eventId) => {
     setEventsState(
       eventsState.map((event) => {

@@ -93,6 +93,11 @@ export default function CropDoctorPage() {
     },
   }
 
+  /**
+   * Handles file change events to update image and preview URL.
+   *
+   * @param {Event} e - The file input change event object.
+   */
   const handleFileChange = (e) => {
     const file = e.target.files[0]
     if (file) {
@@ -103,10 +108,21 @@ export default function CropDoctorPage() {
     }
   }
 
+  /**
+   * Handles the dragover event for elements that support it.
+   *
+   * @param {Event} e - The dragover event object.
+   * @throws {Error} If the event is not a valid DragEvent.
+   */
   const handleDragOver = (e) => {
     e.preventDefault()
   }
 
+  /**
+   * Handles file drop events to process image files.
+   *
+   * @param {Event} e - The drag event object containing the dropped files.
+   */
   const handleDrop = (e) => {
     e.preventDefault()
     const file = e.dataTransfer.files[0]
@@ -124,6 +140,19 @@ export default function CropDoctorPage() {
     }
   }
 
+  /**
+   * Asynchronously starts accessing the camera using the MediaDevices API.
+   *
+   * This function attempts to open the user's webcam and set it as the source for a video element.
+   * If successful, it updates the state variables to reflect that the camera is active,
+   * permission has been granted, and there are no errors. If an error occurs during
+   * access, it logs the error to the console, sets the appropriate state variables,
+   * and displays a toast notification informing the user to allow camera access.
+   *
+   * @async
+   * @function startCamera
+   * @throws {Error} - Throws an error if the camera access is denied or fails.
+   */
   const startCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true })
@@ -145,6 +174,11 @@ export default function CropDoctorPage() {
     }
   }
 
+  /**
+   * Stops the camera stream by stopping all tracks and setting the source object to null.
+   *
+   * @function stopCamera
+   */
   const stopCamera = () => {
     if (videoRef.current && videoRef.current.srcObject) {
       const tracks = videoRef.current.srcObject.getTracks()
@@ -154,6 +188,12 @@ export default function CropDoctorPage() {
     }
   }
 
+  /**
+   * Captures an image from a video element and converts it to a Blob, then creates a File object from the Blob.
+   *
+   * @returns {void}
+   * @throws {Error} - Throws an error if videoRef or canvasRef is not defined.
+   */
   const captureImage = () => {
     if (videoRef.current && canvasRef.current) {
       const video = videoRef.current
@@ -181,6 +221,18 @@ export default function CropDoctorPage() {
     }
   }
 
+  /**
+   * Analyzes an image to detect a disease.
+   *
+   * This function checks if an image is selected. If not, it shows a toast notification
+   * and returns early. Otherwise, it sets the analyzing state to true and simulates an API call
+   * using setTimeout. During the simulation, it randomly selects a disease from the database
+   * and sets the analysis result with a random confidence level. After the simulation,
+   * it updates the analyzing state to false and shows a toast notification indicating
+   * the completion of the analysis.
+   *
+   * @return {void} This function does not return anything.
+   */
   const analyzeImage = () => {
     if (!image) {
       toast({
@@ -213,6 +265,11 @@ export default function CropDoctorPage() {
     }, 2000)
   }
 
+  /**
+   * Resets the analysis state by clearing image, preview URL, result, and file input value.
+   *
+   * @returns {void}
+   */
   const resetAnalysis = () => {
     setImage(null)
     setPreviewUrl(null)

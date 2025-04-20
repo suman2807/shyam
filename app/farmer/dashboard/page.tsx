@@ -136,6 +136,12 @@ export default function FarmerDashboardPage() {
     }
   }, [products, orders])
 
+  /**
+   * Deletes a product from the inventory.
+   *
+   * @param {number} productId - The ID of the product to delete.
+   * @throws Will throw an error if the product with the specified ID does not exist.
+   */
   const handleDeleteProduct = (productId) => {
     setProducts(products.filter((product) => product.id !== productId))
     toast({
@@ -144,6 +150,16 @@ export default function FarmerDashboardPage() {
     })
   }
 
+  /**
+   * Toggles the listing status of a product by its ID.
+   *
+   * @param {number} productId - The unique identifier of the product to toggle.
+   * @returns {void}
+   *
+   * @example
+   * // Toggle the product with ID 123
+   * handleToggleProductListing(123);
+   */
   const handleToggleProductListing = (productId) => {
     setProducts(
       products.map((product) => (product.id === productId ? { ...product, listed: !product.listed } : product)),

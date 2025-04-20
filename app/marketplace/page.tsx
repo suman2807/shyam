@@ -195,6 +195,12 @@ export default function MarketplacePage() {
     }, 500)
   }, [searchTerm, filters])
 
+  /**
+   * Handles the change of category by toggling its presence in the filters.
+   *
+   * @param {string} category - The category to toggle.
+   * @returns {void}
+   */
   const handleCategoryChange = (category) => {
     setFilters((prev) => {
       const categories = prev.categories.includes(category)
@@ -204,14 +210,30 @@ export default function MarketplacePage() {
     })
   }
 
+  /**
+   * Handles the change of the organic filter setting.
+   *
+   * @param {boolean} checked - Whether the organic checkbox is checked or not.
+   */
   const handleOrganicChange = (checked) => {
     setFilters((prev) => ({ ...prev, organic: checked }))
   }
 
+  /**
+   * Handles the change event of the sort option.
+   *
+   * @param {string} value - The new sort value.
+   */
   const handleSortChange = (value) => {
     setFilters((prev) => ({ ...prev, sortBy: value }))
   }
 
+  /**
+   * Handles adding a product to the cart and displays a toast notification.
+   *
+   * @param {Object} product - The product object to be added to the cart.
+   * @param {string} product.name - The name of the product.
+   */
   const handleAddToCart = (product) => {
     toast({
       title: "Added to cart",
@@ -219,6 +241,13 @@ export default function MarketplacePage() {
     })
   }
 
+  /**
+   * Adds a product to the user's wishlist and displays a toast notification.
+   *
+   * @param {Object} product - The product object to be added to the wishlist.
+   * @param {string} product.name - The name of the product.
+   * @return {undefined}
+   */
   const handleAddToWishlist = (product) => {
     toast({
       title: "Added to wishlist",
@@ -226,6 +255,14 @@ export default function MarketplacePage() {
     })
   }
 
+  /**
+   * Clears all filters and resets search term to its default state.
+   *
+   * This function is responsible for resetting the application's filters
+   * to their initial values, which includes clearing categories,
+   * setting organic to false, adjusting price range, sorting by relevance,
+   * and emptying the search term.
+   */
   const clearFilters = () => {
     setFilters({
       categories: [],

@@ -132,6 +132,11 @@ export default function EditProductPage({ params }) {
     }
   }, [id, router, toast])
 
+  /**
+   * Handles input change events to update form data state.
+   *
+   * @param {Event} e - The input event object containing the target element.
+   */
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({
@@ -140,6 +145,15 @@ export default function EditProductPage({ params }) {
     }))
   }
 
+  /**
+   * Handles the change event of a checkbox input field.
+   *
+   * @param {boolean} checked - The current state of the checkbox (checked or unchecked).
+   * @returns {void}
+   *
+   * Example usage:
+   * handleCheckboxChange(true); // Sets the 'organic' property in formData to true
+   */
   const handleCheckboxChange = (checked) => {
     setFormData((prev) => ({
       ...prev,
@@ -147,6 +161,13 @@ export default function EditProductPage({ params }) {
     }))
   }
 
+  /**
+   * Handles changes in form data for select elements.
+   *
+   * @param {string} name - The name of the form field to update.
+   * @param {*} value - The new value for the form field.
+   * @returns {void}
+   */
   const handleSelectChange = (name, value) => {
     setFormData((prev) => ({
       ...prev,
@@ -154,6 +175,11 @@ export default function EditProductPage({ params }) {
     }))
   }
 
+  /**
+   * Handles the change event for an image input element, updating form data with the selected file and creating a preview URL.
+   *
+   * @param {Event} e - The change event object from the file input.
+   */
   const handleImageChange = (e) => {
     const file = e.target.files[0]
     if (file) {
@@ -165,6 +191,15 @@ export default function EditProductPage({ params }) {
     }
   }
 
+  /**
+   * Handles the form submission event.
+   *
+   * This function prevents the default form submission behavior,
+   * validates the input data, simulates an API call (or real call in a production environment),
+   * and updates the UI accordingly based on the success or failure of the operation.
+   *
+   * @param {Event} e - The form submission event object.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitting(true)

@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
+/**
+ * Generates JSX to display a collection of farmer stories with details such as their farm, location, specialty, and impact.
+ *
+ * @returns {JSX.Element} - A React component displaying the list of farmers in cards.
+ */
 export default function FarmerStories() {
   const farmers = [
     {

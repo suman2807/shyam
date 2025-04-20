@@ -18,6 +18,13 @@ export const metadata = {
     generator: 'v0.dev'
 }
 
+/**
+ * Renders the root layout of the application.
+ *
+ * @param {Object} props - The component props.
+ * @prop {React.ReactNode} children - The child elements to be rendered within the layout.
+ * @returns {JSX.Element} - The rendered root layout.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

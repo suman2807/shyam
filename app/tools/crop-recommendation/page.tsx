@@ -14,6 +14,14 @@ import { Slider } from "@/components/ui/slider"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/hooks/use-toast"
 
+/**
+ * A functional component that provides crop recommendations based on user inputs such as location, soil type, and other agricultural factors.
+ *
+ * This component manages the state for loading status, results, and form data, and handles user input changes.
+ * It simulates an API call to fetch crop recommendations based on the selected state and soil type.
+ *
+ * @returns {JSX.Element} The rendered component containing the crop recommendation form and results.
+ */
 export default function CropRecommendationPage() {
   const { toast } = useToast()
   const [loading, setLoading] = useState(false)
@@ -113,19 +121,46 @@ export default function CropRecommendationPage() {
     }
   }
 
+  /**
+   * Handles input changes by updating the form data state.
+   *
+   * @param {Event} e - The event object containing information about the input change.
+   * @returns {void}
+   * @example
+   * <input type="text" name="username" onChange={handleInputChange} />
+   */
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
+  /**
+   * Handles the change event of a select input field.
+   *
+   * @param {string} name - The name attribute of the select input field.
+   * @param {*} value - The selected value from the select input field.
+   */
   const handleSelectChange = (name, value) => {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
+  /**
+   * Handles the change event of a slider input.
+   *
+   * @param {string} name - The name or identifier of the slider.
+   * @param {Array<number>} value - An array containing the new value of the slider.
+   */
   const handleSliderChange = (name, value) => {
     setFormData(prev => ({ ...prev, [name]: value[0] }))
   }
 
+  /**
+   * Handles form submission by preventing default form behavior,
+   * initiating loading state, simulating an API call to fetch crop recommendations based on form data,
+   * updating results state, and showing a toast notification upon completion.
+   *
+   * @param {Event} e - The event object representing the form submission.
+   */
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)

@@ -2,6 +2,14 @@ import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
+/**
+ * Renders a component providing an overview of how FarmLink works for both farmers and consumers.
+ * This includes the steps involved in creating a farm profile, listing products, using AI tools,
+ * fulfilling orders, browsing local farms, shopping fresh produce, supporting surplus redistribution,
+ * and choosing pickup or delivery options.
+ *
+ * @returns {React.ReactNode} - The rendered component.
+ */
 export default function HowItWorks() {
   return (
     <div>

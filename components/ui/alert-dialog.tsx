@@ -45,6 +45,16 @@ const AlertDialogContent = React.forwardRef<
 ))
 AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
 
+/**
+ * A component representing the header of an alert dialog.
+ *
+ * @param {Object} props - The properties to customize the AlertDialogHeader.
+ * @param {string} [props.className] - Additional classes to apply to the root element.
+ * @returns {JSX.Element} - The rendered AlertDialogHeader component.
+ *
+ * Example usage:
+ * <AlertDialogHeader className="custom-header-class">
+ *   {/* Content of the header */
 const AlertDialogHeader = ({
   className,
   ...props
@@ -59,6 +69,16 @@ const AlertDialogHeader = ({
 )
 AlertDialogHeader.displayName = "AlertDialogHeader"
 
+/**
+ * Renders an alert dialog footer component with optional custom class names and other props.
+ *
+ * @param {React.HTMLAttributes<HTMLDivElement>} props - The props to pass to the underlying div element.
+ * @param {string} [props.className] - Optional class name(s) to apply to the container.
+ * @returns {JSX.Element} - The rendered AlertDialogFooter component.
+ *
+ * @example
+ * <AlertDialogFooter className="custom-class">
+ *   {/* Additional content */
 const AlertDialogFooter = ({
   className,
   ...props
