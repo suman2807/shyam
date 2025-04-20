@@ -5,6 +5,19 @@ import * as ResizablePrimitive from "react-resizable-panels"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * A component that wraps the `ResizablePrimitive.PanelGroup` from the `@Resizable/panel-group` package.
+ * It extends the functionality by allowing for custom class names and additional properties while maintaining the panel group's directionality.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} [props.className] - Optional className to be applied to the root element of the ResizablePanelGroup.
+ * @returns {JSX.Element} - A React JSX Element representing a `ResizablePrimitive.PanelGroup`.
+ *
+ * @example
+ * <ResizablePanelGroup className="custom-class-name">
+ *   <!-- Panel content here -->
+ * </ResizablePanelGroup>
+ */
 const ResizablePanelGroup = ({
   className,
   ...props
