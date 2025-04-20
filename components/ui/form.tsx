@@ -28,6 +28,15 @@ const FormFieldContext = React.createContext<FormFieldContextValue>(
   {} as FormFieldContextValue
 )
 
+/**
+ * A higher-order component that wraps the `Controller` component from React Hook Form to provide context for form fields.
+ *
+ * @template TFieldValues - The type of the form values. Defaults to `FieldValues`.
+ * @template TName - The type of the field name. Defaults to `FieldPath<TFieldValues>`.
+ *
+ * @param {ControllerProps<TFieldValues, TName>} props - The properties for the `FormField` component.
+ * @returns {JSX.Element} - A JSX element representing the wrapped `Controller` component with additional context provided by the `FormFieldContext`.
+ */
 const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
