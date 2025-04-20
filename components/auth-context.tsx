@@ -53,6 +53,12 @@ const MOCK_USERS = [
   },
 ]
 
+/**
+ * Provides authentication context to its children components.
+ *
+ * @param {Object} props - The component props.
+ * @param {ReactNode} props.children - The child components that need access to the authentication context.
+ */
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -74,6 +80,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, [user])
 
+  /**
+   * Asynchronously logs a user in by verifying their email and password.
+   *
+   * @param {string} email - The user's email address.
+   * @param {string} password - The user's password.
+   * @returns {Promise<boolean>} A promise that resolves to true if the login is successful, otherwise false.
+   *
+   * @example
+   * login('user@example.com', 'password123')
+   *   .then((success) => {
+   *     if (success) {
+   *       console.log('Login successful');
+   *     } else {
+   *       console.log('Login failed');
+   *     }
+   *   });
+   */
   const login = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true)
 
@@ -94,6 +117,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return false
   }
 
+  /**
+   * Simulates user signup by creating a new user if the email does not already exist.
+   *
+   * @param {string} name - The user's name.
+   * @param {string} email - The user's email address.
+   * @param {string} password - The user's password.
+   * @param {UserType} userType - The type of the user (e.g., 'admin', 'customer').
+   * @returns {Promise<boolean>} - A promise that resolves to true if signup is successful, false otherwise.
+   *
+   * @throws {Error} - Throws an error if there is a problem during the signup process.
+   */
   const signup = async (name: string, email: string, password: string, userType: UserType): Promise<boolean> => {
     setIsLoading(true)
 
@@ -127,6 +161,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return true
   }
 
+  /**
+   * Updates the user profile with the provided updates.
+   *
+   * @param {Partial<User>} updates - An object containing the partial update to be applied to the user profile.
+   * @throws {Error} If `user` is not defined, an error will be thrown indicating that the user is not logged in.
+   */
   const updateUserProfile = (updates: Partial<User>) => {
     if (user) {
       const updatedUser = { ...user, ...updates }
@@ -135,6 +175,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  /**
+   * Logs out the user by removing their session information from local storage,
+   * setting the user state to null, and navigating to the home page.
+   *
+   * @function
+   * @name logout
+   */
   const logout = () => {
     localStorage.removeItem("krishijyothi_user")
     setUser(null)
@@ -148,6 +195,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   )
 }
 
+/**
+ * Hook to access authentication context.
+ *
+ * @returns {Object} The authentication context provided by AuthProvider.
+ * @throws {Error} Throws an error if used outside of an AuthProvider.
+ */
 export function useAuth() {
   const context = useContext(AuthContext)
   if (context === undefined) {
