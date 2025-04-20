@@ -1,5 +1,20 @@
 import { NextResponse } from "next/server"
 
+/**
+ * Handles HTTP POST requests to subscribe users to a newsletter.
+ *
+ * @async
+ * @param {Request} request - The incoming HTTP request object containing the user's email.
+ * @returns {Promise<Response>} A promise that resolves with an HTTP response.
+ *
+ * @example
+ * // Example usage:
+ * const response = await fetch('/api/newsletter', {
+ *   method: 'POST',
+ *   body: new FormData().append('email', 'user@example.com')
+ * });
+ * console.log(response.json());
+ */
 export async function POST(request: Request) {
   try {
     const formData = await request.formData()
