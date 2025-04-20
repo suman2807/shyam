@@ -42,6 +42,12 @@ export default function ProfilePage() {
     )
   }
 
+  /**
+   * Toggles the editing state of the profile form.
+   *
+   * If not currently editing, initializes the form with the current user data.
+   * Then toggles the `isEditing` state to switch between edit and non-edit modes.
+   */
   const handleEditToggle = () => {
     if (!isEditing) {
       // Initialize form with current user data
@@ -54,6 +60,12 @@ export default function ProfilePage() {
     setIsEditing(!isEditing)
   }
 
+  /**
+   * Handles input changes by updating the state of profileData with the new value.
+   *
+   * @param {Event} e - The event object containing the details of the input change.
+   * @throws {Error} If the event does not contain target or if target does not have name and value properties.
+   */
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setProfileData((prev) => ({
@@ -62,6 +74,15 @@ export default function ProfilePage() {
     }))
   }
 
+  /**
+   * Handles the process of saving a user profile.
+   *
+   * This function simulates updating a user's profile by showing a toast message
+   * indicating that the profile has been updated. It also sets the `isEditing` state to false,
+   * assuming this is part of a larger application where users can edit their profiles.
+   *
+   * @function
+   */
   const handleSaveProfile = () => {
     // In a real app, this would make an API call to update the user profile
     toast({
