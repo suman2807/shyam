@@ -11,6 +11,12 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/hooks/use-toast"
 
+/**
+ * Renders a preview of products from different categories such as vegetables, fruits, and grains.
+ *
+ * @function MarketplacePreview
+ * @returns {JSX.Element} - Returns the JSX for the marketplace preview component.
+ */
 export default function MarketplacePreview() {
   const [activeTab, setActiveTab] = useState("vegetables")
   const { toast } = useToast()
@@ -132,6 +138,13 @@ export default function MarketplacePreview() {
     ],
   }
 
+  /**
+   * Handles adding a product to the cart and displays a toast notification.
+   *
+   * @param {Object} product - The product object containing details about the item being added to the cart.
+   * @param {string} product.name - The name of the product.
+   * @throws {Error} If the product object is not provided or does not contain a valid name property.
+   */
   const handleAddToCart = (product) => {
     toast({
       title: "Added to cart",
@@ -139,6 +152,18 @@ export default function MarketplacePreview() {
     })
   }
 
+  /**
+   * Handles the process of adding a product to the user's wishlist.
+   *
+   * @param {Object} product - The product object to be added to the wishlist.
+   * @param {string} product.name - The name of the product.
+   * @returns {undefined}
+   * @throws {Error} If the toast function is not available or an error occurs during the toast notification process.
+   *
+   * Example usage:
+   * const product = { name: "Laptop" };
+   * handleAddToWishlist(product);
+   */
   const handleAddToWishlist = (product) => {
     toast({
       title: "Added to wishlist",
