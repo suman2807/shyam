@@ -124,6 +124,18 @@ const CommandItem = React.forwardRef<
 
 CommandItem.displayName = CommandPrimitive.Item.displayName
 
+/**
+ * Represents a component that displays a command shortcut with customizable styling.
+ *
+ * @param {React.HTMLAttributes<HTMLSpanElement>} props - HTML attributes to pass to the underlying `span` element.
+ * @param {string} [props.className] - Additional classes to apply to the component.
+ * @returns {JSX.Element} - The rendered `CommandShortcut` component.
+ *
+ * @example
+ * <CommandShortcut className="custom-class">
+ *   Ctrl + S
+ * </CommandShortcut>
+ */
 const CommandShortcut = ({
   className,
   ...props
