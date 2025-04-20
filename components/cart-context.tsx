@@ -27,6 +27,12 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
 
+/**
+ * Provides a context for managing a shopping cart using React's Context API.
+ *
+ * @param {Object} props - The component's props.
+ * @param {ReactNode} props.children - The children components to render within the cart provider.
+ */
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
   const { toast } = useToast()
@@ -48,6 +54,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("krishijyothi_cart", JSON.stringify(items))
   }, [items])
 
+  /**
+   * Adds or updates an item in the cart.
+   *
+   * @param {CartItem} item - The item to add or update. Must not include the "quantity" property.
+   * @param {number} [quantity=1] - The quantity of the item to add. Defaults to 1.
+   * @returns {void}
+   *
+   * @example
+   * addItem({ id: '001', name: 'T-shirt' }, 2);
+   * // Adds two T-shirts to the cart
+   */
   const addItem = (item: Omit<CartItem, "quantity">, quantity = 1) => {
     setItems((currentItems) => {
       // Check if item already exists in cart
@@ -98,6 +115,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setItems((currentItems) => currentItems.map((item) => (item.id === id ? { ...item, quantity } : item)))
   }
 
+  /**
+   * Clears the cart by resetting the items array to an empty state and displaying a toast notification.
+   *
+   * @function clearCart
+   * @returns {void}
+   */
   const clearCart = () => {
     setItems([])
     toast({
@@ -129,6 +152,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
   )
 }
 
+/**
+ * Custom hook that provides access to the cart context within a component.
+ *
+ * @returns {object} The current value of the CartContext. Throws an error if used outside of a CartProvider.
+ * @throws {Error} If called outside of a CartProvider, indicating that the component is not wrapped in a CartProvider.
+ */
 export function useCart() {
   const context = useContext(CartContext)
   if (context === undefined) {
