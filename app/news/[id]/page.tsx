@@ -286,6 +286,11 @@ export default function NewsDetailPage({ params }) {
     }
   }, [id])
   
+  /**
+   * Handles the share functionality of an article using the Web Share API.
+   *
+   * @function
+   */
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
